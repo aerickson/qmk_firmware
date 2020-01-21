@@ -1,9 +1,9 @@
 #pragma once
 
 
-#define MODS_SHIFT  (get_mods() & MOD_MASK_SHIFT)
-#define MODS_CTRL   (get_mods() & MOD_MASK_CTRL)
-#define MODS_ALT    (get_mods() & MOD_MASK_ALT)
+// #define MODS_SHIFT  (get_mods() & MOD_MASK_SHIFT)
+// #define MODS_CTRL   (get_mods() & MOD_MASK_CTRL)
+// #define MODS_ALT    (get_mods() & MOD_MASK_ALT)
 
 // #define IS_COMMAND() (get_mods() == MOD_MASK_SHIFT)      // Key combination that allows the use of magic commands (useful for debugging)
 
@@ -55,7 +55,7 @@
 // #define RGB_MATRIX_LED_FLUSH_LIMIT 16 // limits in milliseconds how frequently an animation will update the LEDs. 16 (16ms) is equivalent to limiting to 60fps (increases keyboard responsiveness)
 // #define RGBLIGHT_ANIMATIONS             // Run RGB animations
 // #define RGBLIGHT_ANIMATIONS             // Enable all additional animation modes.
-// #define RGBLIGHT_EFFECT_ALTERNATING     // Enable alternating animation mode.
+#define RGBLIGHT_EFFECT_ALTERNATING     // Enable alternating animation mode.
 // #define RGBLIGHT_EFFECT_BREATHING       // Enable breathing animation mode.
 // #define RGBLIGHT_EFFECT_CHRISTMAS       // Enable christmas animation mode.
 // #define RGBLIGHT_EFFECT_KNIGHT          // Enable knight animation mode.
@@ -63,7 +63,7 @@
 // #define RGBLIGHT_EFFECT_RAINBOW_SWIRL   // Enable rainbow swirl animation mode.
 // #define RGBLIGHT_EFFECT_RGB_TEST        // Enable RGB test animation mode.
 // #define RGBLIGHT_EFFECT_SNAKE           // Enable snake animation mode.
-// #define RGBLIGHT_EFFECT_STATIC_GRADIENT // Enable static gradient mode.
+#define RGBLIGHT_EFFECT_STATIC_GRADIENT // Enable static gradient mode.
 
 // #define RGBLIGHT_EFFECT_BREATHE_CENTER              // If defined, used to calculate the curve for the breathing animation. Valid values are 1.0 to 2.7
 // #define RGBLIGHT_EFFECT_BREATHE_MAX 255             // The maximum brightness for the breathing mode. Valid values are 1 to 255
@@ -97,8 +97,8 @@
 #define DISABLE_RGB_MATRIX_DUAL_BEACON                   // Full gradient spinning around center of keyboard
 #define DISABLE_RGB_MATRIX_RAINBOW_BEACON                // Full tighter gradient spinning around center of keyboard
 #define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS             // Full dual gradients spinning two halfs of keyboard
-// #define DISABLE_RGB_MATRIX_RAINDROPS                     // Randomly changes a single key's hue
-// #define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS           // Randomly changes a single key's hue and saturation
+#define DISABLE_RGB_MATRIX_RAINDROPS                     // Randomly changes a single key's hue
+#define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS           // Randomly changes a single key's hue and saturation
 // =================================================== Requires RGB_MATRIX_FRAMEBUFFER_EFFECTS =============================================================
 // #define DISABLE_RGB_MATRIX_TYPING_HEATMAP                // How hot is your WPM!
 #define DISABLE_RGB_MATRIX_DIGITAL_RAIN                  // That famous computer simulation
