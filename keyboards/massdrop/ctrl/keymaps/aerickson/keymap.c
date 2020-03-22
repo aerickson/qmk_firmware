@@ -10,6 +10,12 @@ enum ctrl_keycodes {
     MD_BOOT,               //Restart into bootloader after hold timeout
 };
 
+#define TIMEOUT_ACTIVITY 300000 // 300 seconds before lights go off
+
+uint32_t time_last_activity;
+bool led_timeout;
+led_flags_t led_state;
+
 keymap_config_t keymap_config;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,10 +49,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
+    time_last_activity = timer_read32();
 };
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
+    if (!led_timeout && timer_elapsed32(time_last_activity) > TIMEOUT_ACTIVITY) {
+        led_timeout = true;
+        led_state = rgb_matrix_get_flags();
+        if (led_state != LED_FLAG_NONE)
+        {
+            rgb_matrix_set_flags(LED_FLAG_NONE);
+            rgb_matrix_disable_noeeprom();
+        }
+    }
 };
 
 #define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))
@@ -55,6 +71,15 @@ void matrix_scan_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
+
+    time_last_activity = timer_read32();
+    if (led_timeout) {
+        led_timeout = false;
+        if (led_state != LED_FLAG_NONE) {
+            rgb_matrix_set_flags(led_state);
+            rgb_matrix_enable_noeeprom();
+        }
+    }
 
     switch (keycode) {
         case U_T_AUTO:
