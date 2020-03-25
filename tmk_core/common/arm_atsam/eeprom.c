@@ -25,7 +25,8 @@
 #endif
 
 volatile uint8_t *SmartEEPROM8 = (uint8_t *) 0x44000000;
-uint8_t buffer[EEPROM_SIZE];
+// defined above...
+//uint8_t buffer[EEPROM_SIZE];
 
 __attribute__((aligned(4))) static uint8_t buffer[EEPROM_SIZE];
 
